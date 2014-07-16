@@ -1,21 +1,19 @@
 #include "Hangman.h"
 
-Hangman::Hangman()
+Hangman::Hangman(): stage(0), used_letter_arr_size(0)
 {
-    this->stage = 0;
-    this->used_letter_arr_size = 0;
-    for (int i = 0; i < MAX_ARR_SIZE; i++)
-    {
-        this->used_letters[i] = '0';
-    }
-    
-    this->examples[0] = "fish";
-    this->examples[1] = "trumpet";
-    this->examples[2] = "chicago";
-    this->examples[3] = "screwdriver";
-    this->examples[4] = "hangman";
-    this->examples[5] = "who are you?";
-    this->examples[6] = "hello world";
+    // TODO: Change / Remove
+    examples[0] = "fish";
+    examples[1] = "trumpet";
+    examples[2] = "chicago";
+    examples[3] = "screwdriver";
+    examples[4] = "hangman";
+    examples[5] = "who are you?";
+    examples[6] = "hello world";
+
+    // TODO: Remove
+    str_to_char(examples[5], solution);
+    create_guess_string();
 }
 
 void Hangman::str_to_char(string inp, char arr[])
@@ -28,7 +26,7 @@ void Hangman::str_to_char(string inp, char arr[])
     arr[i] = '\0';
 }
 
-void Hangman::create_guess_string(char solution[], char guess_string[])
+void Hangman::create_guess_string()
 {
     int i = 0;
     for(; solution[i] != '\0'; i++)
@@ -43,17 +41,22 @@ void Hangman::create_guess_string(char solution[], char guess_string[])
     guess_string[i] = '\0';
 }
 
-void Hangman::check_letter(char letter, char guess_string[])
+// TODO: Change params after basic testing
+void Hangman::check_letter(char letter)
 {
+    bool result = false;
     for (int i = 0; guess_string[i] != '\0'; i++)
     {
         if (solution[i] == letter)
         {
             guess_string[i] = solution[i];
+            result = true;
         }
     }
     used_letters[used_letter_arr_size] = letter;
     used_letter_arr_size++;
+
+    if (!result) stage++;
 }
 
 bool Hangman::check_solution()
@@ -69,6 +72,13 @@ bool Hangman::check_solution()
     return true;
 }
    
+void Hangman::print_guess_string()
+{
+    for (int i = 0; guess_string[i] != '\0'; i++)
+    {
+        cout << guess_string[i] << " ";
+    }
+}
 
 void Hangman::draw_hangman()
 {

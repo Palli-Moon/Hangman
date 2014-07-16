@@ -9,18 +9,22 @@ class Hangman
 {
 public:
     Hangman();
+    // TODO: Make methods private
 
     // Turns a string input into a character array
     void str_to_char(string inp, char arr[]);
 
     // Prepares the guess string using the solution string
-    void create_guess_string(char solution[], char guess_string[]);
+    void create_guess_string();
 
     // Checks if letter is part of solution and adjusts the guess string
-    void check_letter(char letter, char guess_string[]);
+    void check_letter(char letter);
 
     // Returns false unless all letters have been guessed
     bool check_solution();
+
+    // Draws the guess string
+    void print_guess_string();
 
     // Draws the gangman
     void draw_hangman();
