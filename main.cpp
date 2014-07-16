@@ -16,6 +16,7 @@ int main()
     }
     cout << endl;
     h.create_guess_string(arr, arr2);
+    h.check_letter('l', arr2);
     for (int i = 0; arr2[i] != '\0'; i++)
     {
         cout << arr2[i] << " ";
