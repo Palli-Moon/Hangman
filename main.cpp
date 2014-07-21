@@ -15,5 +15,6 @@ int main()
     h.draw_hangman();
     h.print_guess_string();
     cout << endl;
+    h.print_wrong_letters();
     return 0;
 }

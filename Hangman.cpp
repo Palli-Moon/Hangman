@@ -1,6 +1,9 @@
 #include "Hangman.h"
 
-Hangman::Hangman(): stage(0), used_letter_arr_size(0)
+Hangman::Hangman(): 
+stage(0), 
+used_letters_arr_size(0), 
+wrong_letters_arr_size(0)
 {
     // TODO: Change / Remove
     examples[0] = "fish";
@@ -14,6 +17,15 @@ Hangman::Hangman(): stage(0), used_letter_arr_size(0)
     // TODO: Remove
     str_to_char(examples[5], solution);
     create_guess_string();
+}
+
+void Hangman::start_game()
+{
+    cout << "Welcome to Hangman 0.1b by Palli Moon!" << endl;
+    while(true)
+    {
+
+    }
 }
 
 void Hangman::str_to_char(string inp, char arr[])
@@ -53,10 +65,15 @@ void Hangman::check_letter(char letter)
             result = true;
         }
     }
-    used_letters[used_letter_arr_size] = letter;
-    used_letter_arr_size++;
+    used_letters[used_letters_arr_size] = letter;
+    used_letters_arr_size++;
 
-    if (!result) stage++;
+    if (!result)
+    {
+        wrong_letters[wrong_letters_arr_size] = letter;
+        wrong_letters_arr_size++;
+        stage++;
+    }
 }
 
 bool Hangman::check_solution()
@@ -71,6 +88,21 @@ bool Hangman::check_solution()
     }
     return true;
 }
+
+char Hangman::get_input()
+{
+    char c;
+    cout << "Guess >> ";
+    c = getchar();
+    while (!(c >= 65 && c <= 90 ||
+             c >= 97 && c <= 122))
+    {
+        cout << "Please enter a valid guess." << endl;
+        cout << "Guess >> ";
+        c = getchar();
+    }
+    return c;
+}
    
 void Hangman::print_guess_string()
 {
@@ -78,6 +110,17 @@ void Hangman::print_guess_string()
     {
         cout << guess_string[i] << " ";
     }
+}
+
+
+void Hangman::print_wrong_letters()
+{
+    cout << "Wrong letters: ";
+    for (int i = 0; i < wrong_letters_arr_size; i++)
+    {
+        cout << wrong_letters[i] << " ";
+    }
+    cout << endl;
 }
 
 void Hangman::draw_hangman()
