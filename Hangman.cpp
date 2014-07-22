@@ -46,13 +46,22 @@ void Hangman::str_to_char(string inp, char arr[])
     arr[i] = '\0';
 }
 
+bool Hangman::check_if_letter(char c)
+{
+    if (c >= 65 && c <= 90 ||
+        c >= 97 && c <= 122)
+    {
+        return true;
+    }
+    return false;
+}
+
 void Hangman::create_guess_string()
 {
     int i = 0;
     for(; solution[i] != '\0'; i++)
     {
-        if (solution[i] >= 65 && solution[i] <= 90 ||
-            solution[i] >= 97 && solution[i] <= 122)
+        if (check_if_letter(solution[i]))
         {
             guess_string[i] = '_';
         }else{
@@ -121,9 +130,7 @@ char Hangman::get_input()
     char c;
     cout << "Guess >> ";
     cin >> c;
-    if ((c > 90 && c < 97)
-           || c < 65
-           || c > 122)
+    if (!check_if_letter(c))
     {
         cout << "Please enter a valid guess." << endl;
         cout << "Guess >> ";

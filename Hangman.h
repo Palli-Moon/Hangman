@@ -22,29 +22,15 @@ public:
     Hangman();
     // TODO: Make methods private
 
-    // Starts game loop
     void start_game();
-
-    // Turns a string input into a character array
     void str_to_char(string inp, char arr[]);
-
-    // Prepares the guess string using the solution string
+    bool check_if_letter(char c);
     void create_guess_string();
-
-    // Checks if letter is part of solution and adjusts the guess string
     void check_letter(char letter);
-
-    // Returns false unless all letters have been guessed
     bool check_solution();
-
     char get_input();
-
-    // Draws the guess string
     void print_guess_string();
-
     void print_wrong_letters();
-
-    // Draws the gangman
     void draw_hangman();
 };
 #endif
