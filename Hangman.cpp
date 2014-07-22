@@ -22,7 +22,7 @@ wrong_letters_arr_size(0)
 void Hangman::start_game()
 {
     for (int i = 0; i < 50; i++) cout << endl;
-    cout << "Welcome to Hangman 0.1b by Palli Moon!" << endl;
+    cout << "Welcome to Hangman 0.2b by Palli Moon!" << endl;
     cout << endl;
     while(true)
     {
@@ -107,6 +107,7 @@ bool Hangman::check_solution()
 {
     if (stage >= 6)
     {
+        draw_lose_screen();
         cout << "You have lost! The word / phrase was: \"";
         for (int i = 0; solution[i] != '\0'; i++)
         {
@@ -120,6 +121,7 @@ bool Hangman::check_solution()
     {
         if (guess_string[i] == '_') return false;
     }
+    draw_win_screen();
     cout << "You won! Well done!!" << endl;
     return true;
 }
@@ -235,5 +237,25 @@ void Hangman::draw_hangman()
             cout << " |___        "  << endl;
             break;
     }
+    cout << endl;
+}
+
+void Hangman::draw_win_screen()
+{
+    cout << "__   __                     _       _ "       << endl;
+    cout << "\\ \\ / /__  _   _  __      _(_)_ __ | |"     << endl;
+    cout << " \\ V / _ \\| | | | \\ \\ /\\ / / | '_ \\| |" << endl;
+    cout << "  | | (_) | |_| |  \\ V  V /| | | | |_|"      << endl;
+    cout << "  |_|\\___/ \\__,_|   \\_/\\_/ |_|_| |_(_)"   << endl;
+    cout << endl;
+}
+
+void Hangman::draw_lose_screen()
+{
+    cout << "__   __            _                "     << endl; 
+    cout << "\\ \\ / /__  _   _  | | ___  ___  ___ "   << endl;
+    cout << " \\ V / _ \\| | | | | |/ _ \\/ __|/ _ \\" << endl;
+    cout << "  | | (_) | |_| | | | (_) \\__ \\  __/"   << endl;
+    cout << "  |_|\\___/ \\__,_| |_|\\___/|___/\\___|" << endl;
     cout << endl;
 }

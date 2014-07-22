@@ -32,5 +32,7 @@ public:
     void print_guess_string();
     void print_wrong_letters();
     void draw_hangman();
+    void draw_win_screen();
+    void draw_lose_screen();
 };
 #endif
