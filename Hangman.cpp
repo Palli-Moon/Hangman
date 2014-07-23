@@ -19,6 +19,7 @@ wrong_letters_arr_size(0)
     create_guess_string();
 }
 
+// Starts game loop
 void Hangman::start_game()
 {
     for (int i = 0; i < 50; i++) cout << endl;
@@ -36,6 +37,7 @@ void Hangman::start_game()
     // TODO: again?
 }
 
+// Casts string to char array
 void Hangman::str_to_char(string inp, char arr[])
 {
     int i = 0;
@@ -46,6 +48,7 @@ void Hangman::str_to_char(string inp, char arr[])
     arr[i] = '\0';
 }
 
+// Returns true IFF the input is a letter of the english alphabet
 bool Hangman::check_if_letter(char c)
 {
     if (c >= 65 && c <= 90 ||
@@ -56,6 +59,7 @@ bool Hangman::check_if_letter(char c)
     return false;
 }
 
+// Creates the guess string to be printed to console
 void Hangman::create_guess_string()
 {
     int i = 0;
@@ -71,7 +75,7 @@ void Hangman::create_guess_string()
     guess_string[i] = '\0';
 }
 
-// TODO: Change params after basic testing
+// Checks if the input is correct
 void Hangman::check_letter(char letter)
 {
     for (int i = 0; i < used_letters_arr_size; i++)
@@ -103,6 +107,7 @@ void Hangman::check_letter(char letter)
     }
 }
 
+// Checks if the game has been won / lost
 bool Hangman::check_solution()
 {
     if (stage >= 6)
@@ -126,6 +131,7 @@ bool Hangman::check_solution()
     return true;
 }
 
+// Gets player input and returns the guess if valid
 char Hangman::get_input()
 {
     // TODO: make better
@@ -142,6 +148,7 @@ char Hangman::get_input()
     return c;
 }
    
+// Prints the guess string in its current form
 void Hangman::print_guess_string()
 {
     for (int i = 0; guess_string[i] != '\0'; i++)
@@ -151,7 +158,7 @@ void Hangman::print_guess_string()
     cout << endl;
 }
 
-
+// Prints the letters which were guessed wrong
 void Hangman::print_wrong_letters()
 {
     cout << "Wrong letters: ";
@@ -162,6 +169,7 @@ void Hangman::print_wrong_letters()
     cout << endl;
 }
 
+// Draws the hangman
 void Hangman::draw_hangman()
 {
     switch(stage)
@@ -240,6 +248,7 @@ void Hangman::draw_hangman()
     cout << endl;
 }
 
+// Draws the win screen
 void Hangman::draw_win_screen()
 {
     cout << "__   __                     _       _ "       << endl;
@@ -250,6 +259,7 @@ void Hangman::draw_win_screen()
     cout << endl;
 }
 
+// Draws the lose screen
 void Hangman::draw_lose_screen()
 {
     cout << "__   __            _                "     << endl; 

@@ -8,7 +8,6 @@ using namespace std;
 
 class Hangman
 {
-private:
     static const int MAX_ARR_SIZE = 200;
 
     int stage, used_letters_arr_size, wrong_letters_arr_size;
@@ -20,9 +19,8 @@ private:
     string examples[MAX_ARR_SIZE];
 public:
     Hangman();
-    // TODO: Make methods private
-
     void start_game();
+private:
     void str_to_char(string inp, char arr[]);
     bool check_if_letter(char c);
     void create_guess_string();
