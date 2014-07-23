@@ -15,7 +15,7 @@ wrong_letters_arr_size(0)
     examples[6] = "hello world";
 
     // TODO: Remove
-    str_to_char(examples[3], solution);
+    str_to_char(examples[1], solution);
     create_guess_string();
 }
 
@@ -112,6 +112,7 @@ bool Hangman::check_solution()
 {
     if (stage >= 6)
     {
+        draw_hangman();
         draw_lose_screen();
         cout << "You have lost! The word / phrase was: \"";
         for (int i = 0; solution[i] != '\0'; i++)
