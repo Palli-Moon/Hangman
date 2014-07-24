@@ -51,8 +51,8 @@ void Hangman::str_to_char(string inp, char arr[])
 // Returns true IFF the input is a letter of the english alphabet
 bool Hangman::check_if_letter(char c)
 {
-    if (c >= 65 && c <= 90 ||
-        c >= 97 && c <= 122)
+    if ((c >= 65 && c <= 90) ||
+        (c >= 97 && c <= 122))
     {
         return true;
     }

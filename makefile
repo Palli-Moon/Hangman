@@ -1,2 +1,2 @@
 all:
-	g++ main.cpp Hangman.cpp -o hangman.out
+	g++ -Wall main.cpp Hangman.cpp -o hangman.out
