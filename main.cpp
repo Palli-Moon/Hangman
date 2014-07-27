@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string> // remove
 #include "Hangman.h"
 using namespace std;
 

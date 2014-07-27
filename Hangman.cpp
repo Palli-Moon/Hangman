@@ -1,10 +1,15 @@
 #include "Hangman.h"
+#include <stdlib.h>
 
 Hangman::Hangman(): 
 stage(0), 
 used_letters_arr_size(0), 
 wrong_letters_arr_size(0)
 {
+    int random_num;
+    srand(time(NULL));
+    random_num = rand() % 7;
+
     // TODO: Change / Remove
     examples[0] = "fish";
     examples[1] = "trumpet";
@@ -15,7 +20,7 @@ wrong_letters_arr_size(0)
     examples[6] = "hello world";
 
     // TODO: Remove
-    str_to_char(examples[1], solution);
+    str_to_char(examples[random_num], solution);
     create_guess_string();
 }
 
