@@ -1,4 +1,5 @@
 #include <iostream> // TODO: Remove
+#include "files.h"
 using namespace std;
 
 Files::Files(char* filename)
