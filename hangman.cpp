@@ -1,26 +1,15 @@
 #include <stdlib.h>
 #include "hangman.h"
+#include "files.h"
 
 Hangman::Hangman(): 
 stage(0), 
 used_letters_arr_size(0), 
 wrong_letters_arr_size(0)
 {
-    int random_num;
     srand(time(NULL));
-    random_num = rand() % 7;
 
-    // TODO: Change / Remove
-    examples[0] = "fish";
-    examples[1] = "trumpet";
-    examples[2] = "chicago";
-    examples[3] = "screwdriver";
-    examples[4] = "hangman";
-    examples[5] = "who are you?";
-    examples[6] = "hello world";
-
-    // TODO: Remove
-    str_to_char(examples[random_num], solution);
+    solution = fetch_string_from_file("asdf.txt"); // TODO: Change filename
     create_guess_string();
 }
 
@@ -42,6 +31,15 @@ void Hangman::start_game()
     // TODO: Check if player wants to go again?
 }
 
+// Gets a random line from a file
+string Hangman::fetch_string_from_file(string filename)
+{
+    str_to_char(filename, this->filename);
+
+    Files f(this->filename);
+    return f.get_string(rand());
+}
+
 // Casts string to char array
 void Hangman::str_to_char(string inp, char arr[])
 {
@@ -54,6 +52,7 @@ void Hangman::str_to_char(string inp, char arr[])
 }
 
 // Returns true IFF the input is a letter of the english alphabet
+// TODO: fix caps bug
 bool Hangman::check_if_letter(char c)
 {
     if ((c >= 65 && c <= 90) ||

@@ -12,6 +12,7 @@ class Hangman
 public:
     Hangman();
     void start_game();
+    string fetch_string_from_file(string filename);
 private:
     static const int MAX_ARR_SIZE = 200;
 
@@ -30,9 +31,10 @@ private:
     int stage, used_letters_arr_size, wrong_letters_arr_size;
     char used_letters[MAX_ARR_SIZE];
     char wrong_letters[MAX_ARR_SIZE];
-    char solution[MAX_ARR_SIZE];
+    char filename[MAX_ARR_SIZE];
     char guess_string[MAX_ARR_SIZE]; 
   
+    string solution;
     string examples[MAX_ARR_SIZE];
 };
 #endif

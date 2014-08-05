@@ -7,7 +7,7 @@ using namespace std;
 class Files
 {
 public:
-    Files(char* filename);
+    Files(char *filename);
     ~Files();
     void clear_eof();
     string get_string(int linenum);

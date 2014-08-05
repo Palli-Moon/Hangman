@@ -2,7 +2,7 @@
 #include "files.h"
 using namespace std;
 
-Files::Files(char* filename)
+Files::Files(char *filename)
 {
     ifs.open(filename);
     int currline = 0;
