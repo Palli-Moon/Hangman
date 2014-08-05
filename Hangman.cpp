@@ -1,5 +1,5 @@
-#include "Hangman.h"
 #include <stdlib.h>
+#include "Hangman.h"
 
 Hangman::Hangman(): 
 stage(0), 

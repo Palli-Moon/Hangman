@@ -1,28 +1,28 @@
 #ifndef HANGMAN_H
 #define HANGMAN_H
 
-#include <iostream>
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
+#include <iostream>
 #include <string>
 using namespace std;
 
 class Hangman
 {
+public:
+    Hangman();
+    void start_game();
+private:
     static const int MAX_ARR_SIZE = 200;
-
+  
     int stage, used_letters_arr_size, wrong_letters_arr_size;
     char used_letters[MAX_ARR_SIZE];
     char wrong_letters[MAX_ARR_SIZE];
     char solution[MAX_ARR_SIZE];
     char guess_string[MAX_ARR_SIZE]; 
-
+  
     string examples[MAX_ARR_SIZE];
-public:
-    Hangman();
-    void start_game();
-private:
+
     void str_to_char(string inp, char arr[]);
     bool check_if_letter(char c);
     void create_guess_string();
