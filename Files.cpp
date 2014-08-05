@@ -1,5 +1,5 @@
-#include "Files.h"
 #include <iostream> // TODO: Remove
+#include "Files.h"
 using namespace std;
 
 Files::Files()
@@ -20,5 +20,4 @@ Files::~Files()
 
 void Files::get_string()
 {
-    ifs.close();
 }
