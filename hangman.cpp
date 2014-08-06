@@ -16,7 +16,7 @@ wrong_letters_arr_size(0)
 // Starts game loop
 void Hangman::start_game()
 {
-    for (int i = 0; i < 50; i++) cout << endl;
+    for (int i = 0; i < 50; ++i) cout << endl;
     cout << "Welcome to Hangman 0.2b by Palli Moon!" << endl;
     cout << endl;
     while (true)
@@ -25,7 +25,7 @@ void Hangman::start_game()
         print_guess_string();
         print_wrong_letters();
         check_letter(get_input());
-        for (int i = 0; i < 50; i++) cout << endl;
+        for (int i = 0; i < 50; ++i) cout << endl;
         if(check_solution()) break;
     }
     // TODO: Check if player wants to go again?
@@ -44,7 +44,7 @@ string Hangman::fetch_string_from_file(string filename)
 void Hangman::str_to_char(string inp, char arr[])
 {
     int i = 0;
-    for (; inp[i] != '\0'; i++)
+    for (; inp[i] != '\0'; ++i)
     {
         arr[i] = inp[i];
     }
@@ -67,7 +67,7 @@ bool Hangman::check_if_letter(char c)
 void Hangman::create_guess_string()
 {
     int i = 0;
-    for (; solution[i] != '\0'; i++)
+    for (; solution[i] != '\0'; ++i)
     {
         if (check_if_letter(solution[i]))
         {
@@ -82,7 +82,7 @@ void Hangman::create_guess_string()
 // Checks if the input is correct
 void Hangman::check_letter(char letter)
 {
-    for (int i = 0; i < used_letters_arr_size; i++)
+    for (int i = 0; i < used_letters_arr_size; ++i)
     {
         if (used_letters[i] == letter)
         {
@@ -92,7 +92,7 @@ void Hangman::check_letter(char letter)
         }
     }
     bool result = false;
-    for (int i = 0; guess_string[i] != '\0'; i++)
+    for (int i = 0; guess_string[i] != '\0'; ++i)
     {
         if (solution[i] == letter)
         {
@@ -119,7 +119,7 @@ bool Hangman::check_solution()
         draw_hangman();
         draw_lose_screen();
         cout << "You have lost! The word / phrase was: \"";
-        for (int i = 0; solution[i] != '\0'; i++)
+        for (int i = 0; solution[i] != '\0'; ++i)
         {
             cout << solution[i];
         }
@@ -127,7 +127,7 @@ bool Hangman::check_solution()
         return true;
     }
 
-    for (int i = 0; guess_string[i] != '\0'; i++)
+    for (int i = 0; guess_string[i] != '\0'; ++i)
     {
         if (guess_string[i] == '_') return false;
     }
@@ -156,7 +156,7 @@ char Hangman::get_input()
 // Prints the guess string in its current form
 void Hangman::print_guess_string()
 {
-    for (int i = 0; guess_string[i] != '\0'; i++)
+    for (int i = 0; guess_string[i] != '\0'; ++i)
     {
         cout << guess_string[i] << " ";
     }
@@ -167,7 +167,7 @@ void Hangman::print_guess_string()
 void Hangman::print_wrong_letters()
 {
     cout << "Wrong letters: ";
-    for (int i = 0; i < wrong_letters_arr_size; i++)
+    for (int i = 0; i < wrong_letters_arr_size; ++i)
     {
         cout << wrong_letters[i] << " ";
     }

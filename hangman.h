@@ -7,6 +7,8 @@
 #include <string>
 using namespace std;
 
+#define MAX_ARR_SIZE 200
+
 class Hangman
 {
 public:
@@ -14,8 +16,6 @@ public:
     void start_game();
     string fetch_string_from_file(string filename);
 private:
-    static const int MAX_ARR_SIZE = 200;
-
     void str_to_char(string inp, char arr[]);
     bool check_if_letter(char c);
     void create_guess_string();
@@ -33,8 +33,6 @@ private:
     char wrong_letters[MAX_ARR_SIZE];
     char filename[MAX_ARR_SIZE];
     char guess_string[MAX_ARR_SIZE]; 
-  
     string solution;
-    string examples[MAX_ARR_SIZE];
 };
 #endif

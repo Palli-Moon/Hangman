@@ -4,15 +4,16 @@
 #include <string>
 using namespace std;
 
+#define MAX_ARR_SIZE 200
+
 class Files
 {
 public:
     Files(char *filename);
     ~Files();
-    void clear_eof();
     string get_string(int linenum);
 private:
-    static const int MAX_ARR_SIZE = 200;
+    void clear_eof();
 
     ifstream ifs;
     int file_length; // number of lines in the file

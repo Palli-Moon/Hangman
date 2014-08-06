@@ -10,7 +10,7 @@ Files::Files(char *filename)
     {
         cout << "File failed to open" << endl;
     }else{
-        for (string line; getline(ifs, line); currline++);
+        for (string line; getline(ifs, line); ++currline);
         file_length = currline;
         clear_eof();
     }
@@ -32,7 +32,7 @@ string Files::get_string(int linenum)
     clear_eof();
     int currline = 0;
     linenum %= file_length;
-    for (string line; getline(ifs, line); currline++)
+    for (string line; getline(ifs, line); ++currline)
     {
         if (currline == linenum)
         {
