@@ -14,7 +14,7 @@ public:
 private:
     static const int MAX_ARR_SIZE = 200;
 
-    std::ifstream ifs;
+    ifstream ifs;
     int file_length; // number of lines in the file
 };
 #endif
