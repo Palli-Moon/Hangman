@@ -9,7 +9,7 @@ wrong_letters_arr_size(0)
 {
     srand(time(NULL));
 
-    solution = fetch_string_from_file("asdf.txt"); // TODO: Change filename
+    solution = fetch_string_from_file("mistery.txt"); // TODO: Change filename
     create_guess_string();
 }
 
