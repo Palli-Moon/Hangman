@@ -17,7 +17,7 @@ wrong_letters_arr_size(0)
 void Hangman::start_game()
 {
     for (int i = 0; i < 50; ++i) cout << endl;
-    cout << "Welcome to Hangman 0.2b by Palli Moon!" << endl;
+    cout << "Welcome to Hangman by Palli Moon!" << endl;
     cout << endl;
     while (true)
     {
