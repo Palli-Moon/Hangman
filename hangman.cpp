@@ -177,6 +177,9 @@ void Hangman::print_wrong_letters()
 // Draws the hangman
 void Hangman::draw_hangman()
 {
+    // Hangman ascii art gotten from:
+    // http://ascii.co.uk/art/hangman
+
     // TODO: More difficulty levels?
     switch(stage)
     {
@@ -297,6 +300,9 @@ void Hangman::draw_hangman()
 // Draws the win screen
 void Hangman::draw_win_screen()
 {
+    // Win screen ascii word art generated at:
+    // http://patorjk.com/software/taag
+
     cout << "__   __                     _       _ "       << endl;
     cout << "\\ \\ / /__  _   _  __      _(_)_ __ | |"     << endl;
     cout << " \\ V / _ \\| | | | \\ \\ /\\ / / | '_ \\| |" << endl;
@@ -308,6 +314,9 @@ void Hangman::draw_win_screen()
 // Draws the lose screen
 void Hangman::draw_lose_screen()
 {
+    // Lose screen ascii word art generated at:
+    // http://patorjk.com/software/taag
+
     cout << "__   __            _                "     << endl; 
     cout << "\\ \\ / /__  _   _  | | ___  ___  ___ "   << endl;
     cout << " \\ V / _ \\| | | | | |/ _ \\/ __|/ _ \\" << endl;
