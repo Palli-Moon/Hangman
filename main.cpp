@@ -1,5 +1,5 @@
-#include "hangman.h"
-#include "files.h"
+#include "Hangman.h"
+#include "Files.h"
 using namespace std;
 
 int main()

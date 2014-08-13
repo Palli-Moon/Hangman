@@ -1,5 +1,5 @@
 #include <iostream> // TODO: Remove
-#include "files.h"
+#include "Files.h"
 using namespace std;
 
 Files::Files(char *filename)
