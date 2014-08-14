@@ -4,10 +4,10 @@ using namespace std;
 
 int main()
 {
-    //Hangman h;
-    //h.start_game();
-
     Menu m;
-    m.test();
+    m.welcome_screen();
+
+    Hangman h;
+    h.start_game();
     return 0;
 }

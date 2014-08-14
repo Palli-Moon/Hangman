@@ -2,11 +2,12 @@
 #define MENU_H
 
 #include <iostream>
+using namespace std;
 
 class Menu
 {
 public:
-    void test();
+    void welcome_screen();
 
 };
 #endif
