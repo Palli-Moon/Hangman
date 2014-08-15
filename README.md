@@ -12,6 +12,7 @@ All the phrases/words are currently stored in the **mistery.txt** file, which ca
 Enjoy my shitty game! :D
 
 #Planned features
+* **Will switch to ncurses for "graphics"**
 * More difficulty levels
 * Different categories of phrases/words (even quotes?)
 * Menus the player can navigate through
