@@ -3,119 +3,141 @@
 #include "Files.h"
 
 Hangman::Hangman(): 
-stage(0), 
+stage(4), 
 used_letters_arr_size(0), 
 wrong_letters_arr_size(0)
 {
-  srand(time(NULL));
-
-  solution = fetch_string_from_file("mistery.txt"); // TODO: Change filename
-  create_guess_string();
+    srand(time(NULL));
+  
+    solution = fetch_string_from_file("mistery.txt"); 
+    // TODO: Change filename
+    create_guess_string();
 }
 
 // Starts game loop
-void Hangman::start_game() {
-  for (int i = 0; i < 50; ++i) cout << endl;
-  cout << "Welcome to Hangman by Palli Moon!" << endl;
-  cout << endl;
-  while (true) {
-    draw_hangman();
-    print_guess_string();
-    print_wrong_letters();
-    check_letter(get_input());
-    for (int i = 0; i < 50; ++i) cout << endl;
-    if(check_solution()) break;
-  }
-  // TODO: Check if player wants to go again?
+void Hangman::start_game()
+{
+    clear_screen();
+    while (true) 
+    {
+        draw_hangman();
+        print_guess_string();
+        print_wrong_letters();
+        check_letter(get_input());
+        clear_screen();
+        if(check_solution()) break;
+    }
+    // TODO: Check if player wants to go again?
 }
 
 // Gets a random line from a file
-string Hangman::fetch_string_from_file(string filename) {
-  str_to_char(filename, this->filename);
+string Hangman::fetch_string_from_file(string filename)
+{
+    str_to_char(filename, this->filename);
+  
+    Files f(this->filename);
+    return f.get_string(rand());
+}
 
-  Files f(this->filename);
-  return f.get_string(rand());
+void Hangman::clear_screen()
+{
+    for (int i = 0; i < 50; ++i) cout << endl;
 }
 
 // Casts string to char array
-void Hangman::str_to_char(string inp, char arr[]) {
-  int i = 0;
-  for (; inp[i] != '\0'; ++i)
-  {
-    arr[i] = inp[i];
-  }
-  arr[i] = '\0';
+void Hangman::str_to_char(string inp, char arr[]) 
+{
+    int i = 0;
+    for (; inp[i] != '\0'; ++i)
+    {
+        arr[i] = inp[i];
+    }
+    arr[i] = '\0';
 }
 
 // Returns true IFF the input is a letter of the english alphabet
 // TODO: fix caps bug
-bool Hangman::check_if_letter(char c) {
-  if ((c >= 65 && c <= 90) ||
-      (c >= 97 && c <= 122))
-  {
-    return true;
-  }
-  return false;
+bool Hangman::check_if_letter(char c) 
+{
+    if ((c >= 65 && c <= 90) ||
+        (c >= 97 && c <= 122))
+    {
+        return true;
+    }
+    return false;
 }
 
 // Creates the guess string to be printed to console
-void Hangman::create_guess_string() {
-  int i = 0;
-  for (; solution[i] != '\0'; ++i) {
-    if (check_if_letter(solution[i])) {
-      guess_string[i] = '_';
-    } else {
-      guess_string[i] = solution[i];
+void Hangman::create_guess_string() 
+{
+    int i = 0;
+    for (; solution[i] != '\0'; ++i) 
+    {
+        if (check_if_letter(solution[i])) 
+        {
+            guess_string[i] = '_';
+        } else {
+            guess_string[i] = solution[i];
+        }
     }
-  }
-  guess_string[i] = '\0';
+    guess_string[i] = '\0';
 }
 
 // Checks if the input is correct
-void Hangman::check_letter(char letter) {
-  for (int i = 0; i < used_letters_arr_size; ++i) {
-    if (used_letters[i] == letter) {
-      cout << "You have already guessed that letter" << endl;
-      check_letter(get_input());
-      return;
+void Hangman::check_letter(char letter) 
+{
+    for (int i = 0; i < used_letters_arr_size; ++i) 
+    {
+        if (used_letters[i] == letter) 
+        {
+            cout << "You have already guessed that letter" << endl;
+            check_letter(get_input());
+            return;
+        }
     }
-  }
-  bool result = false;
-  for (int i = 0; guess_string[i] != '\0'; ++i) {
-    if (solution[i] == letter) {
-      guess_string[i] = solution[i];
-      result = true;
+    bool result = false;
+    for (int i = 0; guess_string[i] != '\0'; ++i) 
+    {
+        if (solution[i] == letter) 
+        {
+            guess_string[i] = solution[i];
+            result = true;
+        }
     }
-  }
-  used_letters[used_letters_arr_size] = letter;
-  used_letters_arr_size++;
-
-  if (!result) {
-    wrong_letters[wrong_letters_arr_size] = letter;
-    wrong_letters_arr_size++;
-    stage++;
-  }
+    used_letters[used_letters_arr_size] = letter;
+    used_letters_arr_size++;
+  
+    if (!result) 
+    {
+        wrong_letters[wrong_letters_arr_size] = letter;
+        wrong_letters_arr_size++;
+        stage++;
+    }
 }
 
 // Checks if the game has been won / lost
-bool Hangman::check_solution() {
-  if (stage >= 10) {
-    draw_hangman();
-    draw_lose_screen();
-    cout << "You have lost! The word / phrase was: \"";
-    for (int i = 0; solution[i] != '\0'; ++i) {
-      cout << solution[i];
+bool Hangman::check_solution() 
+{
+    if (stage >= 10) 
+    {
+        draw_hangman();
+        draw_lose_screen();
+        cout << "You have lost! The word / phrase was: \"";
+        for (int i = 0; solution[i] != '\0'; ++i) 
+        {
+            cout << solution[i];
+        }
+        cout << "\"" << endl;
+        return true;
     }
-    cout << "\"" << endl;
+  
+    for (int i = 0; guess_string[i] != '\0'; ++i) 
+    {
+        if (guess_string[i] == '_') return false;
+    }
+    draw_win_screen();
+    cout << "You won! Well done!!" << endl;
     return true;
-  }
-
-  for (int i = 0; guess_string[i] != '\0'; ++i) {
-    if (guess_string[i] == '_') return false;
-  }
-  draw_win_screen();
-  cout << "You won! Well done!!" << endl;
-  return true;
 }
 
 // Gets player input and returns the guess if valid

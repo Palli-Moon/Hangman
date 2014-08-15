@@ -15,6 +15,7 @@ public:
     Hangman();
     void start_game();
     string fetch_string_from_file(string filename);
+    static void clear_screen();
 private:
     void str_to_char(string inp, char arr[]);
     bool check_if_letter(char c);
