@@ -2,6 +2,8 @@ Hangman
 =======
 Hangman is a little console game that I created mainly to practice git and vim.
 
+I plan on porting the game to ncurses to make it more pleasing to the eye. This will mean that it will be unix only, and I will stop work on the original game until I have learned to use ncurses.
+
 #How to play
 The player writes the letters he wants to guess until either he's got the whole word or he loses when he's guessed wrong too often. If you don't know the rules of hangman you really should move away from Antartica.
 
