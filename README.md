@@ -25,4 +25,4 @@ Enjoy my shitty game! :D
 #Known bugs
 * The guesses are case-sensitive, although all the answers are in lower-case.
 
-    Copyright by Palli Moon 2014
+Copyright by Palli Moon 2014
