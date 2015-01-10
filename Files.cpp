@@ -6,8 +6,7 @@ Files::Files(char *filename)
 {
     ifs.open(filename);
     int currline = 0;
-    if (ifs.fail())
-    {
+    if (ifs.fail()) {
         cout << "File failed to open" << endl;
     }else{
         for (string line; getline(ifs, line); ++currline);
@@ -33,11 +32,7 @@ string Files::get_string(int linenum)
     int currline = 0;
     linenum %= file_length;
     for (string line; getline(ifs, line); ++currline)
-    {
         if (currline == linenum)
-        {
             return line;
-        }
-    }
     return "error";
 }
